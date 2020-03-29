@@ -57,7 +57,7 @@ class ContactHelper:
         wd = self.app.wd
         # submit edit
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
-        # edit contact
+        # edit contact firstname
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys("1")
