@@ -43,6 +43,7 @@ class ContactHelper:
         wd.find_element_by_name("email").send_keys(contact.email)
         # submit contact creation
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
+        self.return_to_home_page()
 
     def delete_first_contact(self):
         wd = self.app.wd
@@ -52,3 +53,13 @@ class ContactHelper:
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to_alert().accept()
 
+    def edit_first_contact(self):
+        wd = self.app.wd
+        # submit edit
+        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        # edit contact
+        wd.find_element_by_name("firstname").click()
+        wd.find_element_by_name("firstname").clear()
+        wd.find_element_by_name("firstname").send_keys("1")
+        wd.find_element_by_name("update").click()
+        self.return_to_home_page()
