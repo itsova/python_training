@@ -22,7 +22,7 @@ def test_modify_contact_lastname(app):
     if app.contact.count() == 0:
         app.contact.create(Contact(firstname="Test"))
     old_contacts = app.contact.get_contact_list()
-    contact = Contact(lastname="New middlename")
+    contact = Contact(lastname="New lastname")
     index = randrange(len(old_contacts))
     contact.id = old_contacts[index].id
     app.contact.modify_contact_by_index(index, contact)
