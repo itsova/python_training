@@ -30,11 +30,15 @@ class ContactHelper:
         wd = self.app.wd
         self.change_field_value("firstname", contact.firstname)
         self.change_field_value("lastname", contact.lastname)
+        self.change_field_value("address", contact.address)
         self.change_field_value("home", contact.homephone)
         self.change_field_value("mobile", contact.mobilephone)
         self.change_field_value("work", contact.workphone)
         self.change_field_value("phone2", contact.secondaryphone)
         self.change_field_value("email", contact.email)
+        self.change_field_value("email2", contact.email2)
+        self.change_field_value("email3", contact.email3)
+
 
     def change_field_value(self, field_name, text):
         wd = self.app.wd
@@ -95,12 +99,13 @@ class ContactHelper:
                 cells = row.find_elements_by_tag_name("td")
                 firstname = cells[2].text
                 lastname = cells[1].text
-                email = cells[4].text
+                address = cells[3].text
+                all_emails = cells[4].text
                 id = cells[0].find_element_by_tag_name("input").get_attribute("value")
-                all_phones = cells[5].text.splitlines()
-                self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, email=email, id=id,
-                                                  homephone=all_phones[0], mobilephone=all_phones[1],
-                                                  workphone=all_phones[2], secondaryphone=all_phones[3]))
+                all_phones = cells[5].text
+                self.contact_cache.append(Contact(firstname=firstname, lastname=lastname,
+                                                  all_emails_from_home_page=all_emails,
+                                                  id=id, address=address, all_phones_from_home_page=all_phones))
         return list(self.contact_cache)
 
     def open_contact_to_edit_by_index(self, index):
