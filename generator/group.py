@@ -4,7 +4,6 @@ import os.path
 import random
 import string
 import sys
-
 from model.group import Group
 
 try:
