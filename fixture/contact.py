@@ -75,6 +75,14 @@ class ContactHelper:
         wd.find_element_by_name("add").click()
         self.contact_cache = None
 
+    def dell_contact_in_group_by_id(self, id):
+        wd = self.app.wd
+        self.open_contact_page()
+        wd.find_element_by_xpath("//option[@value='%s']" % id).click()
+        wd.find_element_by_id("MassCB").click()
+        wd.find_element_by_name("remove").click()
+        self.contact_cache = None
+
 
     def delete_first_contact(self):
         self.delete_contact_by_index(0)

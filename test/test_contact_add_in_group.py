@@ -9,4 +9,7 @@ def test_add_contact_in_group(app, db):
         app.group.create(Group(name="Test"))
     old_contacts = db.get_contact_list()
     contact = random.choice(old_contacts)
+    old_bind = db.get_address_in_groups()
     app.contact.add_contact_in_group_by_id(contact.id)
+    new_bind = db.get_address_in_groups()
+    assert len(old_bind) + 1 == len(new_bind)
