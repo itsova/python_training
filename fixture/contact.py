@@ -67,6 +67,14 @@ class ContactHelper:
         wd.switch_to_alert().accept()
         self.contact_cache = None
 
+    def add_contact_in_group_by_id(self, id):
+        wd = self.app.wd
+        self.open_contact_page()
+        self.selected_contact_by_id(id)
+        # submit deletion
+        wd.find_element_by_name("add").click()
+        self.contact_cache = None
+
 
     def delete_first_contact(self):
         self.delete_contact_by_index(0)
