@@ -71,7 +71,7 @@ class ContactHelper:
         wd = self.app.wd
         self.open_contact_page()
         self.selected_contact_by_id(id)
-        # submit deletion
+        #wd.find_elements_by_name("to_group").click()
         wd.find_element_by_name("add").click()
         self.contact_cache = None
 
