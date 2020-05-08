@@ -67,19 +67,20 @@ class ContactHelper:
         wd.switch_to_alert().accept()
         self.contact_cache = None
 
-    def add_contact_in_group_by_id(self, id):
+    def add_contact_in_group_by_id(self, id, g):
         wd = self.app.wd
         self.open_contact_page()
         self.selected_contact_by_id(id)
-        #wd.find_elements_by_name("to_group").click()
+        wd.find_element_by_xpath("//*[@name='to_group']//option[@value='%s']" % g).click()
         wd.find_element_by_name("add").click()
         self.contact_cache = None
 
-    def dell_contact_in_group_by_id(self, id):
+
+    def del_contact_in_group_by_id(self, id, g):
         wd = self.app.wd
         self.open_contact_page()
-        wd.find_element_by_xpath("//option[@value='%s']" % id).click()
-        wd.find_element_by_id("MassCB").click()
+        wd.find_element_by_xpath("//*[@name='group']//option[@value='%s']" % g).click()
+        self.selected_contact_by_id(id)
         wd.find_element_by_name("remove").click()
         self.contact_cache = None
 
