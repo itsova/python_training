@@ -4,4 +4,4 @@ jsonpickle
 pony
 pymysql
 mysql-connector-python-rf
-bdd
+pytest_bdd
